@@ -12,24 +12,53 @@
 #
 #  Contributors:
 #     Ian Craggs - initial version
+#     Pedro Luis Castedo Cepeda
 #*******************************************************************************/
 
-PROJECT(mqtt-sn-tests)
-
-INCLUDE_DIRECTORIES(../src)
-
-ADD_EXECUTABLE(
+add_executable(
   test1
-  test1.c
+  test1
 )
 
-TARGET_LINK_LIBRARIES(test1 MQTTSNPacketClient MQTTSNPacketServer)
+target_compile_features(test1 PRIVATE c_std_99)
 
-ADD_TEST(NAME test1 COMMAND test1)
+target_include_directories(test1
+  PRIVATE
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
-ADD_EXECUTABLE(
+target_link_libraries(test1
+  PRIVATE
+    MQTTSNPacketClient
+    MQTTSNPacketServer
+)
+
+add_test(NAME test1 COMMAND test1)
+
+add_executable(
   test2
-  test2.c
+  test2
 )
 
-TARGET_LINK_LIBRARIES(test2 MQTTSNPacketClient MQTTSNPacketServer)
+target_compile_features(test2 PRIVATE c_std_99)
+
+target_include_directories(test2
+  PRIVATE
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_link_libraries(test2
+  PRIVATE
+    MQTTSNPacketClient
+    MQTTSNPacketServer
+)
+
+target_compile_features(test2 PRIVATE c_std_99)
+set_target_properties(test2
+  PROPERTIES
+    CXX_EXTENSIONS OFF
+)
+
+add_test(NAME test2 COMMAND test2)

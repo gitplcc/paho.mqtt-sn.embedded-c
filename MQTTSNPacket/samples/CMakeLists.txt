@@ -12,50 +12,131 @@
 #
 #  Contributors:
 #     Ian Craggs - initial version
+#     Pedro Luis Castedo Cepeda
 #*******************************************************************************/
 
-PROJECT(mqtt-sn-samples)
+#*******************************************************************************/
+# qos0pub
+#*******************************************************************************/
 
-INCLUDE_DIRECTORIES(../src)
-
-ADD_EXECUTABLE(
+add_executable(qos0pub
   qos0pub
-  qos0pub.c transport.c
+  transport
+)
+target_compile_features(qos0pub PUBLIC c_std_99)
+set_target_properties(qos0pub
+  PROPERTIES
+    C_EXTENSIONS OFF
+)
+if(CMAKE_COMPILER_IS_GNUC)
+  target_compile_options(qos0pub PRIVATE -march=native)
+endif(CMAKE_COMPILER_IS_GNUC)
+target_link_libraries(qos0pub
+  PRIVATE
+    MQTTSNPacketClient
 )
 
-TARGET_LINK_LIBRARIES(qos0pub MQTTSNPacketClient)
+#*******************************************************************************/
+# qos0pub_register
+#*******************************************************************************/
 
-ADD_EXECUTABLE(
+add_executable(qos0pub_register
   qos0pub_register
-  qos0pub_register.c transport.c
+  transport
+)
+target_compile_features(qos0pub_register PUBLIC c_std_99)
+set_target_properties(qos0pub_register
+  PROPERTIES
+    C_EXTENSIONS OFF
+)
+if(CMAKE_COMPILER_IS_GNUC)
+  target_compile_options(qos0pub_register PRIVATE -march=native)
+endif(CMAKE_COMPILER_IS_GNUC)
+target_link_libraries(qos0pub_register
+  PRIVATE
+    MQTTSNPacketClient
 )
 
-TARGET_LINK_LIBRARIES(qos0pub_register MQTTSNPacketClient)
+#*******************************************************************************/
+# qos-1pub
+#*******************************************************************************/
 
-ADD_EXECUTABLE(
+add_executable(qos-1pub
   qos-1pub
-  qos-1pub.c transport.c
+  transport
+)
+target_compile_features(qos-1pub PUBLIC c_std_99)
+set_target_properties(qos-1pub
+  PROPERTIES
+    C_EXTENSIONS OFF
+)
+if(CMAKE_COMPILER_IS_GNUC)
+  target_compile_options(qos-1pub PRIVATE -march=native)
+endif(CMAKE_COMPILER_IS_GNUC)
+target_link_libraries(qos-1pub
+  PRIVATE
+    MQTTSNPacketClient
 )
 
-TARGET_LINK_LIBRARIES(qos-1pub MQTTSNPacketClient)
+#*******************************************************************************/
+# qos-1pub_extended
+#*******************************************************************************/
 
-ADD_EXECUTABLE(
+add_executable(qos-1pub_extended
   qos-1pub_extended
-  qos-1pub_extended.c transport.c
+  transport
+)
+target_compile_features(qos-1pub_extended PUBLIC c_std_99)
+set_target_properties(qos-1pub
+  PROPERTIES
+    C_EXTENSIONS OFF
+)
+if(CMAKE_COMPILER_IS_GNUC)
+  target_compile_options(qos-1pub_extended PRIVATE -march=native)
+endif(CMAKE_COMPILER_IS_GNUC)
+target_link_libraries(qos-1pub_extended
+  PRIVATE
+    MQTTSNPacketClient
 )
 
-TARGET_LINK_LIBRARIES(qos-1pub_extended MQTTSNPacketClient)
+#*******************************************************************************/
+# qos1pub
+#*******************************************************************************/
 
-ADD_EXECUTABLE(
+add_executable(qos1pub
   qos1pub
-  qos1pub.c transport.c
+  transport
+)
+target_compile_features(qos1pub PUBLIC c_std_99)
+set_target_properties(qos1pub
+  PROPERTIES
+    C_EXTENSIONS OFF
+)
+if(CMAKE_COMPILER_IS_GNUC)
+  target_compile_options(qos1pub PRIVATE -march=native)
+endif(CMAKE_COMPILER_IS_GNUC)
+target_link_libraries(qos1pub
+  PRIVATE
+    MQTTSNPacketClient
 )
 
-TARGET_LINK_LIBRARIES(qos1pub MQTTSNPacketClient)
+#*******************************************************************************/
+# pub0sub1
+#*******************************************************************************/
 
-ADD_EXECUTABLE(
+add_executable(pub0sub1
   pub0sub1
-  pub0sub1.c transport.c
+  transport
 )
-
-TARGET_LINK_LIBRARIES(pub0sub1 MQTTSNPacketClient)
+target_compile_features(pub0sub1 PUBLIC c_std_99)
+set_target_properties(pub0sub1
+  PROPERTIES
+    C_EXTENSIONS OFF
+)
+if(CMAKE_COMPILER_IS_GNUC)
+  target_compile_options(pub0sub1 PRIVATE -march=native)
+endif(CMAKE_COMPILER_IS_GNUC)
+target_link_libraries(pub0sub1
+  PRIVATE
+    MQTTSNPacketClient
+)
